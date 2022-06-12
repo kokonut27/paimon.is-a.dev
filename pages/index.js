@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import windowIcon from './utils/windowIcon'
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
           <a 
             href="https://github.com/kokonut27/paimon.is-a.dev/"
           >
-            Visit on Github 
+            Visit on Github <windowIcon />
           </a>
         </p>
       </main>
