@@ -1,4 +1,4 @@
-import { artifacts } from '../data'
+import { artifacts } from '/data'
 
 export default function handler(req, res) {
   const { num, set } = req.query
