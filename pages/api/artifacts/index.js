@@ -1,12 +1,12 @@
-import { AllArtifacts, ArtifactsInfo } from '...../data/artifacts'
+import { artifacts } from '../../../data'
 
 export default function handler(req, res) {
   const { num, set } = req.query
   if (num || set) {
-    if (AllArtifacts.includes(set)) {
+    if (artifacts.AllArtifacts.includes(set)) {
       res.status(200).json({ 
         name: set,
-        rarity: ArtifactsInfo["rarity"]
+        rarity: artifacts.ArtifactsInfo["rarity"]
       })
     }
   } else {
