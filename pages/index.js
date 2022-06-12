@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import windowIcon from '../scripts/WindowIcon'
+import WindowIcon from '../scripts/WindowIcon'
 
 export default function Home() {
   return (
