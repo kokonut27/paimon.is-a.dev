@@ -7,4 +7,5 @@ export default function handler(req, res) {
       name: set,
       rarity: ArtifactsInfo["rarity"]
     })
+  }
 }
