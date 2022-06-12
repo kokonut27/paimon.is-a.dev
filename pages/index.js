@@ -22,7 +22,7 @@ export default function Home() {
           <a 
             href="https://github.com/kokonut27/paimon.is-a.dev/"
           >
-            Visit on Github &#xe164;
+            Visit on Github 
           </a>
         </p>
       </main>
@@ -31,7 +31,7 @@ export default function Home() {
         <a
           href="https://github.com/kokonut27"
         >
-          Built with &heart; by kokonut. 
+          Built with ❤ by kokonut. 
         </a>
       </footer>
     </div>
