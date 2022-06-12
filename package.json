@@ -1,6 +1,8 @@
 {
   "name": "paimonAPI",
-  "private": true,
+  "exports": {
+    "./*": "./*"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
