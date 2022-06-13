@@ -5,9 +5,6 @@ export default function handler(req, res) {
   const sortTypes = ["rarity", "name"]
   if (set) {
     if (artifacts.AllArtifacts.includes(set)) {
-      if (sort && sortTypes.includes(sort)) {
-        
-      }
       res.status(200).json({
         name: set,
         rarity: artifacts.ArtifactsInfo["rarity"]
@@ -20,13 +17,23 @@ export default function handler(req, res) {
       })
     }
   } else if (num) {
+    // if (typeof(num) === Number) {
     try {
       let data = artifacts.AllArtifacts.slice(0, num)
+      // let data = artifacts.AllArtifactsRarity.slice(0, num)
 
       if (!data.includes("")) {
-        res.status(200).json({
-          artifacts: data
-        })
+        if (sort && sortTypes.includes(sort)) {
+          if (sort === "name") {
+            res.status(200).json({
+              artifacts: data.sort()
+            })
+          } else {
+            res.status(200).json({
+              artifacts: data.sort()
+            })
+          }     
+        }
       } else {
         res.status(500).json({
           INTERNAL_SERVER_ERROR: {
@@ -37,7 +44,7 @@ export default function handler(req, res) {
     } catch(err) {
       res.status(500).json({
         INTERNAL_SERVER_ERROR: {
-          error: err
+          error: err.message
         }
       })
     }
