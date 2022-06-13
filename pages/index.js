@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Paimon.is-a.dev</title>
         <meta name="description" content="An Unofficial fan made Genshin REST API." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>
