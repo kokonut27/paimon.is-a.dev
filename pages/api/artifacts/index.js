@@ -17,10 +17,9 @@ export default function handler(req, res) {
       })
     }
   } else if (num) {
-    // if (typeof(num) === Number) {
     try {
       let data = artifacts.AllArtifacts.slice(0, num)
-      // let data = artifacts.AllArtifactsRarity.slice(0, num)
+      let rarityData = artifacts.AllArtifactsRarity.slice(0, num)
 
       if (!data.includes("")) {
         if (sort && sortTypes.includes(sort)) {
@@ -30,7 +29,7 @@ export default function handler(req, res) {
             })
           } else {
             res.status(200).json({
-              artifacts: data.sort()
+              artifacts: rarityData.sort()
             })
           }     
         }
