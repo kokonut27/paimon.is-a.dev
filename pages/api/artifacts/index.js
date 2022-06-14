@@ -19,7 +19,7 @@ function dynamicSort(property) {
 }
 
 export default function handler(req, res) {
-  const { num, set, sort } = req.query
+  const { num, set, sort, types } = req.query
   const sortTypes = ["rarity", "name"]
   if (set) {
     if (artifacts.ListArtifacts.includes(set)) {
@@ -86,9 +86,21 @@ export default function handler(req, res) {
         }
       })
     }
+  } else if (types) {
+    if (types === true || types === false) {
+      res.status(200).json({ 
+        types: ["number", "set"]
+      })
+    } else {
+      res.status(500).json({
+        INTERNAL_SERVER_ERROR: {
+          error: "The server had trouble showing artifact API types!"
+        }
+      })
+    }
   } else {
-    res.status(200).json({ 
-      types: ["number", "set"]
+    res.status(200).json({
+      artifacts: artifacts.AllArtifacts
     })
   }
 }
