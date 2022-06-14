@@ -6,8 +6,7 @@ export default function handler(req, res) {
   if (set) {
     if (artifacts.AllArtifacts.includes(set)) {
       res.status(200).json({
-        name: set,
-        rarity: artifacts.ArtifactsInfo["rarity"]
+        artifacts: artifacts.AllArtifacts
       })
     } else {
       res.status(500).json({
@@ -25,8 +24,11 @@ export default function handler(req, res) {
       if (!data.includes("")) {
         if (sort && sortTypes.includes(sort)) {
           if (sort === "name") {
+            data.sort(function(a, b) {
+              return a.name - b.name;
+            });
             res.status(200).json({
-              artifacts: data.sort()
+              artifacts: data
             })
           } else {
             rarityData.sort(function(a, b) {

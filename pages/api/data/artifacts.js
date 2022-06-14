@@ -1,15 +1,18 @@
 export const artifacts = {
   AllArtifacts: [
-    "dfdasf"
+    {
+      name: "asdf",
+      rarity: 5
+    }
   ],
   AllArtifactsRarity: [
     {
-      rarity: 3,
-      name: "idk"
+      name: "idk",
+      rarity: 3
     },
     {
-      rarity: 5,
-      name: "idk2"
+      name: "idk2",
+      rarity: 4
     }
   ],
   ArtifactsInfo: {}
