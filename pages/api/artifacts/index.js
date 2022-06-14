@@ -29,8 +29,11 @@ export default function handler(req, res) {
               artifacts: data.sort()
             })
           } else {
+            rarityData.sort(function(a, b) {
+              return a.rarity - b.rarity;
+            });
             res.status(200).json({
-              artifacts: rarityData.sort()
+              artifacts: rarityData
             })
           }     
         } else if (sort === undefined) {
