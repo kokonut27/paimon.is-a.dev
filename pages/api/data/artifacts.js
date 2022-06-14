@@ -1,6 +1,6 @@
 export const artifacts = {
   AllArtifacts: [
-    ""
+    "dfdasf"
   ],
   AllArtifactsRarity: [
     {

@@ -17,6 +17,7 @@ export default function handler(req, res) {
       })
     }
   } else if (num) {
+    // console.log(sort);
     try {
       let data = artifacts.AllArtifacts.slice(0, num)
       let rarityData = artifacts.AllArtifactsRarity.slice(0, num)
@@ -32,6 +33,16 @@ export default function handler(req, res) {
               artifacts: rarityData.sort()
             })
           }     
+        } else if (sort === undefined) {
+          res.status(200).json({
+            artifacts: artifacts.AllArtifacts
+          })
+        } else {
+          res.status(500).json({
+            INTERNAL_SERVER_ERROR: {
+              error: "The server had trouble sorting the artifacts!"
+            }
+          })
         }
       } else {
         res.status(500).json({
