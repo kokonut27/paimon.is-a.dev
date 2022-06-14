@@ -1,12 +1,38 @@
-import { artifacts } from '../data/artifacts'
+import { artifacts } from '../data/artifacts';
+
+
+function dynamicSort(property) {
+  var sortOrder = 1;
+
+  if (property[0] === "-") {
+    sortOrder = -1;
+    property = property.substr(1);
+  }
+
+  return function (a,b) {
+    if (sortOrder == -1) {
+      return b[property].localeCompare(a[property]);
+    } else {
+      return a[property].localeCompare(b[property]);
+    }        
+  }
+}
 
 export default function handler(req, res) {
   const { num, set, sort } = req.query
   const sortTypes = ["rarity", "name"]
   if (set) {
-    if (artifacts.AllArtifacts.includes(set)) {
+    if (artifacts.ListArtifacts.includes(set)) {
+      var index = artifacts.AllArtifacts.findIndex(function(a) {
+        return a.name == set;
+      });
+      // console.log(index)
+
       res.status(200).json({
-        artifacts: artifacts.AllArtifacts
+        name: artifacts.AllArtifacts[index].name,
+        twoPiece: artifacts.AllArtifacts[index].twoPiece,
+        fourPiece: artifacts.AllArtifacts[index].fourPiece,
+        rarity: artifacts.AllArtifacts[index].rarity
       })
     } else {
       res.status(500).json({
@@ -19,23 +45,20 @@ export default function handler(req, res) {
     // console.log(sort);
     try {
       let data = artifacts.AllArtifacts.slice(0, num)
-      let rarityData = artifacts.AllArtifactsRarity.slice(0, num)
 
       if (!data.includes("")) {
         if (sort && sortTypes.includes(sort)) {
           if (sort === "name") {
-            data.sort(function(a, b) {
-              return a.name - b.name;
-            });
+            data.sort(dynamicSort("name"))
             res.status(200).json({
               artifacts: data
             })
           } else {
-            rarityData.sort(function(a, b) {
+            data.sort(function(a, b) {
               return a.rarity - b.rarity;
             });
             res.status(200).json({
-              artifacts: rarityData
+              artifacts: data
             })
           }     
         } else if (sort === undefined) {
