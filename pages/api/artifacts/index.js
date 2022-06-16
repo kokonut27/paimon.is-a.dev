@@ -45,6 +45,8 @@ export default function handler(req, res) {
     // console.log(sort);
     try {
       let data = artifacts.AllArtifacts.slice(0, num)
+      // console.log(data)
+      // console.log(artifacts.AllArtifacts.slice(0, 1))
 
       if (!data.includes("")) {
         if (sort && sortTypes.includes(sort)) {
@@ -63,7 +65,7 @@ export default function handler(req, res) {
           }     
         } else if (sort === undefined) {
           res.status(200).json({
-            artifacts: artifacts.AllArtifacts
+            artifacts: data
           })
         } else {
           res.status(500).json({
@@ -89,7 +91,7 @@ export default function handler(req, res) {
   } else if (types) {
     if (types === true || types === false) {
       res.status(200).json({ 
-        types: ["number", "set"]
+        types: ["num", "set"]
       })
     } else {
       res.status(500).json({
