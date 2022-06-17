@@ -1,26 +1,10 @@
 import { artifacts } from '../data/artifacts';
-
-
-function dynamicSort(property) {
-  var sortOrder = 1;
-
-  if (property[0] === "-") {
-    sortOrder = -1;
-    property = property.substr(1);
-  }
-
-  return function (a,b) {
-    if (sortOrder == -1) {
-      return b[property].localeCompare(a[property]);
-    } else {
-      return a[property].localeCompare(b[property]);
-    }        
-  }
-}
+import dynamicSort from '../utils/sortArray';
 
 export default function handler(req, res) {
   const { num, set, sort, types } = req.query
   const sortTypes = ["rarity", "name"]
+  
   if (set) {
     if (artifacts.ListArtifacts.includes(set)) {
       var index = artifacts.AllArtifacts.findIndex(function(a) {
